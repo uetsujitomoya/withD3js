@@ -41,17 +41,20 @@
         var width = 1280;
         var height = 720;
 
-        var svg = d3.select("body").append("svg").attr({width:width, height:height});
-        
-        data.forEach(function (data) {
-          
-        });
 
-        d3.select('svg')
+     
+          
+          
+        
+        
+        face.forEach(function (dh) {
+          var svg = d3.select("body").append("svg").attr({width:width, height:height});
+          d3.select('svg')
           .selectAll('circle')
-          .data(face[h])
+          .data(dh)
           .enter()
           .append('circle')
+          .selectAll('circle')
           .attr({
             cx: function(d) {
             return d[0]*2000 + 100;
@@ -66,6 +69,9 @@
           .style('fill', function(d) {
             return Cesium.Color.fromHsl(hue(d[2]), 1, 0.5);
           });
+        });
+
+        
             
         function csv2Array(filePath) { //csvﾌｧｲﾙﾉ相対ﾊﾟｽor絶対ﾊﾟｽ
         	var csvData = [];
