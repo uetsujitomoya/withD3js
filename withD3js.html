@@ -48,6 +48,7 @@
         
         
         face.forEach(function (dh) {
+          console.log(dh);
           var svg = d3.select("body").append("svg").attr({width:width, height:height});
           d3.select('svg')
           .selectAll('circle')
@@ -57,18 +58,31 @@
           .selectAll('circle')
           .attr({
             cx: function(d) {
-            return d[0]*2000 + 100;
+            
+              console.log(d);
+              return d[0]*2000 + 100;
             },
             cy: function(d) {
-            return -d[1]*2000 + 100;
+              return -d[1]*2000 + 100;
             },
             r: function(d) {
-            return (2-d[2])*(2-d[2])*(2-d[2])*(2-d[2])*(2-d[2])*(2-d[2])*7;
+              return (2-d[2])*(2-d[2])*(2-d[2])*(2-d[2])*(2-d[2])*(2-d[2])*7;
             } 
           })
           .style('fill', function(d) {
             return Cesium.Color.fromHsl(hue(d[2]), 1, 0.5);
           });
+          //setTimeout('',100);
+          var count = 0;
+          var countup = function(){
+            console.log(count++);
+          }
+          var id = setInterval(function(){
+        　　countup();
+        　　if(count > 5){　
+        　　  console.log("実行された");
+        　　　clearInterval(id);　//idをclearIntervalで指定している
+        　}}, 20);
         });
 
         
